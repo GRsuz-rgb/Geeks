@@ -54,4 +54,15 @@ print(my_fav_numbers)
 
 last_element = list(my_fav_numbers)[-1]
 my_fav_numbers.remove(last_element)
+
 print(my_fav_numbers)
+
+#4 Create a set called friend_fav_numbers with my friend’s favorites numbers.
+
+friend_fav_numbers = {1, 43, 36, 56, 7}
+print(friend_fav_numbers)
+
+#5 Concatenating sets
+our_fav_numbers = my_fav_numbers.union(friend_fav_numbers)
+
+print(our_fav_numbers)
