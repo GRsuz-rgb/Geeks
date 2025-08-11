@@ -101,3 +101,21 @@ print(basket)
 
 
 #Exercise 8 : Sandwich Orders
+sandwich_orders = ["Tuna sandwich", "Pastrami sandwich", 
+                "Avocado sandwich", "Pastrami sandwich", "Egg sandwich", 
+                "Chicken sandwich", "Pastrami sandwich"]
+
+#1
+while "Pastrami sandwich" in sandwich_orders:
+    sandwich_orders.remove("Pastrami sandwich")
+
+#2 We need to prepare the orders of the clients:
+#3 Create an empty list called finished_sandwiches.
+#4 One by one, remove each sandwich from the sandwich_orders while adding them to the finished_sandwiches list.
+#5 After all the sandwiches have been made, print a message listing each sandwich that was made
+
+finished_sandwiches = []
+
+for sandwich_order in sandwich_orders:
+    finished_sandwiches.append(sandwich_order)
+    print(f"I made your {sandwich_order}")
