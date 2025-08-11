@@ -1,6 +1,6 @@
 #Challenge 1
 #1 Ask the user for a number and a length.
-
+'''
 number = int(input("Enter your number: "))
 length = int(input("Enter the length of the sequence: "))
 
@@ -11,11 +11,10 @@ for x in range(length):
     multiples_number.append(number * (x + 1))
 print(f"The list of multiples of {number} is: {multiples_number}")
 
-
+'''
 
 #Challenge 2
 #Write a program that asks a string to the user, and display a new string with any duplicate consecutive letters removed.
-
 user_string = input("Enter your string : ")
 new_string = ""
 for x in range(len(user_string)):
