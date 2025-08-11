@@ -66,3 +66,18 @@ print(friend_fav_numbers)
 our_fav_numbers = my_fav_numbers.union(friend_fav_numbers)
 
 print(our_fav_numbers)
+
+
+# Exercise 6: Tuple
+tuple = (11, 2, 3, 45, 38, 7, 8, 66)
+print(tuple)
+print("no we can't add more integers to the tuple, tuples are unchangeable(immutable)")
+
+
+# Exercise 7: List
+basket = ["Banana", "Apples", "Oranges", "Blueberries"]
+print(basket)
+
+#remove Banana 
+basket.remove("Banana")
+print(basket)
