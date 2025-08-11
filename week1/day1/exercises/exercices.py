@@ -81,3 +81,23 @@ print(basket)
 #remove Banana 
 basket.remove("Banana")
 print(basket)
+#remove Blueberries
+basket.remove("Blueberries")
+print(basket)
+#Add Kiwi to the end of the list
+basket.append("Kiwi")
+print(basket)
+#Add Apples to the beginning of the list
+basket.insert(0, "Apples")
+print(basket)
+#Count how many apples are in the basket
+apples_count = basket.count("Apples")
+print(f"There are {apples_count} apples in the basket.")
+#Empty the basket
+basket.clear()
+print("The basket is empty!")
+
+print(basket)
+
+
+#Exercise 8 : Sandwich Orders
