@@ -43,7 +43,7 @@ while True:
 print("User's family:", user_family)
 
 
-"""
+
 
 #Exercise 3: Zara
 #1. Create a dictionary called brand which value is the information from part one (turn the info into keys and values).
@@ -95,3 +95,17 @@ print("Updated brand dictionary:", brand)
 #13. Print the value of the key number_stores. What just happened ?
 print(f"The number stores : {brand["number_stores"]}") 
 
+
+
+
+#Exercise 4 : Some Geography
+#1 Write a function called describe_city() that accepts the name of a city and its country as parameters.
+#2 The function should print a simple sentence, such as “city is in country”.(For example Reykjavik is in Iceland)
+#3 Give the country parameter a default value.
+def describe_city(city, country="Japan"):
+    print(f"{city} is in {country}.")
+#4 Call your function.
+describe_city("Rabat", "Morocco")
+describe_city("Nagoya")
+
+"""
