@@ -46,7 +46,7 @@ while True:
     else:
         user_name = input("Enter your name again: ")
 
-'''
+        
 #Exercise 4: Check the index
 names = ['Samus', 'Cortana', 'V', 'Link', 'Mario', 'Cortana', 'Samus']
 
@@ -57,3 +57,19 @@ if cap_name in names:
     print(f"The index of your name is : {names.index(cap_name)}")
 else:
     print("Your name is not in the list.")
+
+
+'''
+
+#Exercise 5: Greatest Number
+#Ask the user for 3 numbers and print the greatest number.
+number1 = int(input("Enter the first number: "))
+number2 = int(input("Enter the second number: "))
+number3 = int(input("Enter the third number: "))
+
+if number1 >= number2 and number1 >= number3:
+    print(f"The greatest number is: {number1}")
+elif number2 >= number1 and number2 >= number3:
+    print(f"The greatest number is: {number2}")
+else:
+    print(f"The greatest number is: {number3}")
