@@ -108,4 +108,49 @@ def describe_city(city, country="Japan"):
 describe_city("Rabat", "Morocco")
 describe_city("Nagoya")
 
+
+
+#Exercise 5 : Random
+
+#Create a function that accepts a number between 1 and 100 and generates another number randomly between 1 and 100. Use the random module.
+#Compare the two numbers, if it’s the same number, display a success message, otherwise show a fail message and display both numbers.
+import random
+def my_random(user_numb):
+    if 1 <= user_numb <= 100:
+        random_num = random.randint(1, 100)
+        print(f"Random number generated: {random_num}")
+        if user_numb == random_num:
+            print("Winner!")
+        else:
+            print("Good luck next time.")
+    else:
+        print("Invalid. Enter a number between 1 and 100")
+
+#user_number = int(input("Enter a number between 1 and 100: "))
+#my_random(user_number)
+my_random(int(input("Enter a number between 1 and 100: ")))
+
 """
+
+# Exercise 6 : Let’s create some personalized shirts !
+#1 Write a function called make_shirt() that accepts a size and the text of a message that should be printed on the shirt.
+#2 The function should print a sentence summarizing the size of the shirt and the message printed on it, such as “The size of the shirt is size and the text is text“
+def make_shirt(size, message):
+    print(f"The size of the shirt is : {size}  and the text is : {message}")    
+#3 Modify the make_shirt() function so that shirts are large by default with a message that reads “I love Python” by default.
+def make_shirt(size="large", message="I love Python"):
+    print(f"The size of the shirt is: {size} and the text is: {message}")
+#4 Call the function, in order to make a large shirt with the default message
+make_shirt()
+#5 Make medium shirt with the default message
+make_shirt("medium")
+#6 Make a shirt of any size with a different message.
+make_shirt("small", "Dōitashimashite")
+#7 Bonus:
+make_shirt(size="extra large", message="Sayōnara")
+
+
+# Exercise 7 : Temperature Advice
+
+
+
