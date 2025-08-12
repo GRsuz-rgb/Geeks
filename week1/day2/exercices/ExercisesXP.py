@@ -130,7 +130,7 @@ def my_random(user_numb):
 #my_random(user_number)
 my_random(int(input("Enter a number between 1 and 100: ")))
 
-"""
+
 
 # Exercise 6 : Let’s create some personalized shirts !
 #1 Write a function called make_shirt() that accepts a size and the text of a message that should be printed on the shirt.
@@ -149,8 +149,22 @@ make_shirt("small", "Dōitashimashite")
 #7 Bonus:
 make_shirt(size="extra large", message="Sayōnara")
 
+"""
 
 # Exercise 7 : Temperature Advice
+#1 Create a function called get_random_temp().
+#1.1 This function should return an integer between -10 and 40 degrees (Celsius), selected at random.
+import random
+def get_random_temp():
+    return random.randint(-10, 40)  
+#1.2 Test your function to make sure it generates expected results.
+print(get_random_temp())
+#2 Create a function called main().
+#2.1 Inside this function, call get_random_temp() to get a temperature, and store its value in a variable.
+#2.2 Inform the user of the temperature in a friendly message, eg. “The temperature right now is 32 degrees Celsius.”
+def main():
+    temp = get_random_temp()
+    print(f"The temperature right now is {temp} degrees Celsius.")
 
-
+   
 
