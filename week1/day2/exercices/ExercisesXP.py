@@ -160,11 +160,43 @@ def get_random_temp():
 #1.2 Test your function to make sure it generates expected results.
 print(get_random_temp())
 #2 Create a function called main().
-#2.1 Inside this function, call get_random_temp() to get a temperature, and store its value in a variable.
-#2.2 Inform the user of the temperature in a friendly message, eg. “The temperature right now is 32 degrees Celsius.”
+#3 Let’s add more functionality to the main() function.
+#4 Change the get_random_temp() function
+
+def get_random_temp(season):
+    if season == 'winter':
+        return random.randint(-10, 16)
+    elif season == 'spring':
+        return random.randint(0, 23)
+    elif season == 'summer':
+        return random.randint(23, 40)
+    elif season == 'autumn' or season == 'fall':
+        return random.randint(0, 32)
+    
+    
 def main():
-    temp = get_random_temp()
+
+    season = input("Enter a season (summer, autumn, winter, spring): ").lower()
+    if season not in ['summer', 'autumn', 'winter', 'spring', 'fall']:
+        print("Invalid season. Enter one of the following: summer, autumn(or fall), winter, spring.")
+        return
+    temp = get_random_temp(season)
     print(f"The temperature right now is {temp} degrees Celsius.")
 
-   
+    if temp < 0:
+        print("Brrr, that's freezing! Wear some extra layers today.")
+    elif 0 < temp <= 16:
+        print("Quite chilly! Don't forget your coat.")
+    elif 16 < temp <= 23:
+        print("It's a pleasant day!")
+    elif 24 <= temp <= 32:
+        print("It's warm outside, stay hydrated!")
+    elif 32 < temp <= 40:
+        print("It's hot! drink plenty of water.")
+
+
+    
+main()
+
+
 
