@@ -59,7 +59,7 @@ else:
     print("Your name is not in the list.")
 
 
-'''
+
 
 #Exercise 5: Greatest Number
 #Ask the user for 3 numbers and print the greatest number.
@@ -73,3 +73,20 @@ elif number2 >= number1 and number2 >= number3:
     print(f"The greatest number is: {number2}")
 else:
     print(f"The greatest number is: {number3}")
+
+
+'''
+#Exercise 6: Random number
+#Ask the user to input a number from 1 to 9 (including).
+user_num = int(input("Enter a number from 1 to 9 : "))
+#Get a random number between 1 and 9. Hint: random module.
+import random
+random_num = random.randint(1, 9)
+print(random_num)
+#If the user guesses the correct number print a message that says “Winner”.
+#If the user guesses the wrong number print a message that says “Better luck next time.”
+if user_num == random_num:
+    print("winner")
+else:
+    print("Better luck next time.")
+
