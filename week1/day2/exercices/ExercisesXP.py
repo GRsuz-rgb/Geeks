@@ -149,7 +149,8 @@ make_shirt("small", "Dōitashimashite")
 #7 Bonus:
 make_shirt(size="extra large", message="Sayōnara")
 
-"""
+
+
 
 # Exercise 7 : Temperature Advice
 #1 Create a function called get_random_temp().
@@ -198,5 +199,103 @@ def main():
     
 main()
 
+#Bonus: Instead of asking for the season, ask the user for the number of the month (1 = January, 12 = December). Determine the season according to the month.
+def season_according_month(month):
+    if month in [12, 1, 2]:
+        return 'Winter'
+    elif month in [3, 4, 5]:
+        return 'Spring'
+    elif month in [6, 7, 8]:
+        return 'Summer'
+    elif month in [12, 1, 2]:
+        return 'Autumn'
+    else:
+        return -1
+
+userMonth = int(input("Enter a month [1-12] :"))
+if 1 <= userMonth <= 12:
+    print(f"The season is {season_according_month(userMonth)}")
+
+
+"""
+
+# Exercise 8 : Star Wars Quiz
+data = [
+    {
+        "question": "What is Baby Yoda's real name?",
+        "answer": "Grogu"
+    },
+    {
+        "question": "Where did Obi-Wan take Luke after his birth?",
+        "answer": "Tatooine"
+    },
+    {
+        "question": "What year did the first Star Wars movie come out?",
+        "answer": "1977"
+    },
+    {
+        "question": "Who built C-3PO?",
+        "answer": "Anakin Skywalker"
+    },
+    {
+        "question": "Anakin Skywalker grew up to be who?",
+        "answer": "Darth Vader"
+    },
+    {
+        "question": "What species is Chewbacca?",
+        "answer": "Wookiee"
+    }
+]
+#1 Create a function that asks the questions to the user, and check his answers. Track the number of correct, incorrect answers. Create a list of wrong_answers
+def ask():
+    correct= 0
+    incorrect = 0
+    wrong_answers = []
+
+    for item in data:
+        user_answer = input(item["question"] + " ")
+        if user_answer.lower() == item["answer"].lower():
+            print("Correct!\n")
+            correct += 1
+        else:
+            print(f"Wrong! The correct answer was: {item['answer']}\n")
+            incorrect += 1
+            wrong_answers.append({
+                "question": item["question"],
+                "your_answer": user_answer,
+                "correct_answer": item["answer"]
+            })
+
+    return correct, incorrect, wrong_answers
+
+#2 Create a function that informs the user of his number of correct/incorrect answers.
+def your_results(correct, incorrect, wrong_answers):
+    print(f"Correct answers: {correct}")
+    print(f"Incorrect answers: {incorrect}")
+
+    if wrong_answers:
+        print(" Wrong Questions: ")
+        for w in wrong_answers:
+            print(f"Question: {w['question']}")
+            print(f" Your answer: {w['your_answer']}")
+            print(f" Correct answer: {w['correct_answer']}\n")
+
+#3 Bonus
+def quiz():
+    while True:
+        correct, incorrect, wrong_answers = ask()
+        your_results(correct, incorrect, wrong_answers)
+
+        if incorrect > 3:
+            User_choice = input("You had more than 3 wrong answers. Do you want to play again? (yes/no) ").lower()
+            if User_choice != "yes":
+                print("Thanks for playing!")
+                break
+        else:
+            print("Good job!")
+            break
+
+
+quiz()
 
 
