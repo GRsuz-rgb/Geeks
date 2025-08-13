@@ -1,5 +1,5 @@
 #Exercise 1 : Convert lists into dictionaries
-"""
+
 keys = ['Ten', 'Twenty', 'Thirty']
 values = [10, 20, 30]
 
@@ -217,7 +217,7 @@ if 1 <= userMonth <= 12:
     print(f"The season is {season_according_month(userMonth)}")
 
 
-"""
+
 
 # Exercise 8 : Star Wars Quiz
 data = [
