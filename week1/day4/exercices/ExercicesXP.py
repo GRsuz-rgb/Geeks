@@ -42,7 +42,7 @@ sara_pets = Pets(all_cats)
 #4 Take all the cats for a walk, use the walk method
 sara_pets.walk()
 
-'''
+
 #Exercise 2 : Dogs
 #1 Create a class called Dog with the following attributes name, age, weight.
 class Dog ():
@@ -91,3 +91,9 @@ if __name__ == "__main__":
     print(Dog1.fight(Dog3))
     print(Dog1.fight(Dog1))
     print(Dog2.fight(Dog1))
+
+
+'''
+
+# Exercise 3 : Dogs Domesticated
+#1 Create a new python file and import your Dog class from the previous exercise.
