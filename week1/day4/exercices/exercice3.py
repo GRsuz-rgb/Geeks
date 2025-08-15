@@ -9,12 +9,12 @@ class PetDog(Dog):
         self.trained = trained
 
 #4 Add the following methods:
-#train: prints the output of bark and switches the trained boolean to True
+#train:
     def train (self):
         print(f"bark : {self.bark()}")
         self.trained = True
 
-#play: takes a parameter which value is a few names of other Dog instances (use *args). The method should print the following string: “dog_names all play together”.
+#play:
     def play(self, *other_dogs):
         dog_names = ', '.join(dog.name for dog in other_dogs)
         print(f"{dog_names} all play together")
@@ -37,23 +37,18 @@ if __name__ == "__main__":
     PetDog2 = PetDog("Roddy", 6, 24)
     PetDog3 = PetDog("doggy", 3, 12)
 
-  #  print(PetDog1.bark(),"&", PetDog2.bark(),"&", PetDog3.bark())
     print(f"{PetDog1.name} run speed is {PetDog1.run_speed()}")
     print(f"{PetDog2.name} run speed is {PetDog2.run_speed()}")
     print(f"{PetDog3.name} run speed is {PetDog3.run_speed()}")
-    print(f"\nPetDog1 name : {PetDog1.name},\nDog1 age : {PetDog1.age},\nDog1 weight : {PetDog1.weight}")
-    print(f"\nPetDog2 name : {PetDog2.name},\nDog2.age : {PetDog2.age},\nDog2.weight : {PetDog2.weight}")
-    print(f"\nPetDog3 name : {PetDog3.name},\nDog3.age : {PetDog3.age},\nDog3.weight : {PetDog3.weight}")
-    print(PetDog1.fight(PetDog2))
-    print(PetDog2.fight(PetDog3))
-    print(PetDog1.fight(PetDog3))
-    print(PetDog1.fight(PetDog1))
-    print(PetDog2.fight(PetDog1))
+    print(f"\nPetDog1 name : {PetDog1.name},\nPeDog1 age : {PetDog1.age},\nPetDog1 weight : {PetDog1.weight}")
+    print(f"\nPetDog2 name : {PetDog2.name},\nDog2 age : {PetDog2.age},\nPetDog2 weight : {PetDog2.weight}")
+    print(f"\nPetDog3 name : {PetDog3.name},\nDog3 age : {PetDog3.age},\nPetDog3 weight : {PetDog3.weight}")
+
 
     PetDog1.train()
-    PetDog1.do_a_trick()    
-    PetDog1.play(PetDog2, PetDog3)
     PetDog2.train()
-    PetDog2.do_a_trick()
+    PetDog1.do_a_trick()
+    PetDog2.do_a_trick()    
+    PetDog1.play(PetDog2, PetDog3)
     PetDog2.play(PetDog1, PetDog3)
     PetDog3.train()
