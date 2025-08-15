@@ -7,15 +7,15 @@ class Dog ():
         self.weight = weight
 
 #2 Implement the following methods in the Dog class:
-#bark: returns a string which states: “<dog_name> is barking”.
+#bark: 
     def bark(self):
         return f"{self.name} is barking"
 
-#run_speed: returns the dogs running speed (weight/age*10).
+#run_speed: 
     def run_speed(self):
         speed = self.weight / self.age * 10
         return speed
-#fight : takes a parameter which value is another Dog instance, called other_dog. This method returns a string stating which dog won the fight. The winner should be the dog with the higher run_speed x weight.
+#fight: 
 
     def fight (self, other_dog):
         winner1 = self.run_speed() * self.weight
