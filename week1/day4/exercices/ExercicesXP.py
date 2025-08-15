@@ -26,11 +26,19 @@ class Chartreux(Cat):
         return f'{sounds}'
     
 
-
 #1 Create another cat breed named Siamese which inherits from the Cat class.
-#2 Create a list called all_cats, which holds three cat instances : one Bengal, one Chartreux and one Siamese.
-
- class Siamese (Cat):
+class Siamese(Cat):
     def sing(self, sounds):
         return f'{sounds}'
-    
+#2 Create a list called all_cats, which holds three cat instances : one Bengal, one Chartreux and one Siamese.
+all_cats = [
+        Bengal("Bcat", 4),
+        Chartreux("Grochat", 2),
+        Siamese("Sia", 1)
+    ]
+#3 Those three cats are Sara’s pets. Create a variable called sara_pets which value is an instance of the Pet class, and pass the variable all_cats to the new instance.
+sara_pets = Pets(all_cats)
+#4 Take all the cats for a walk, use the walk method
+sara_pets.walk()
+
+#Exercise 2 : Dogs
