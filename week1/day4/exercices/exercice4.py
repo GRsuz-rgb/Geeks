@@ -39,8 +39,8 @@ if __name__ == "__main__":
 
 
     print(f"The first family member's age is >= 18  : {family1.is_18("Lucy")}")
-    print(f"The seconde family member's is >= 18 : {family1.is_18("Pastuzo")}")
-    print(f"The third family member's is >= 18 : {family1.is_18("Paddington")}")
+    print(f"The seconde family member's age is >= 18 : {family1.is_18("Pastuzo")}")
+    print(f"The third family member's age is >= 18 : {family1.is_18("Paddington")}")
 
 
     family1.family_presentation()
