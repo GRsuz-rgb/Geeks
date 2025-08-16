@@ -30,15 +30,17 @@ class Family():
 
             
 #Create an instance of the Family class, with the last name of your choice, and the below members. Then call all the methods you created in Point 2.
-family1 = Family("Brown")
-family1.born(name="Lucy" ,age="50", gender="f")
-family1.born(name="Pastuzo" ,age="55", gender="m")
-family1.born(name="Paddington" ,age="12", gender="m")
+if __name__ == "__main__":
+
+    family1 = Family("Brown")
+    family1.born(name="Lucy" ,age="50", gender="f")
+    family1.born(name="Pastuzo" ,age="55", gender="m")
+    family1.born(name="Paddington" ,age="12", gender="m")
 
 
-print(f"family member 1 is 18  : {family1.is_18("Lucy")}")
-print(f"family member 2 is 18 : {family1.is_18("Pastuzo")}")
-print(f"family member 3 is 18 : {family1.is_18("Paddington")}")
+    print(f"family member 1 is 18  : {family1.is_18("Lucy")}")
+    print(f"family member 2 is 18 : {family1.is_18("Pastuzo")}")
+    print(f"family member 3 is 18 : {family1.is_18("Paddington")}")
 
 
-family1.family_presentation()
+    family1.family_presentation()
