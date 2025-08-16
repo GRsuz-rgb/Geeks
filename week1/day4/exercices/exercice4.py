@@ -11,13 +11,13 @@ class Family():
 #born:
     def born(self, **dic_member):
         self.members.append(dic_member)
-        print(f"Congratulation {self.last_name} the new member")
+        print(f"Congratulation {self.last_name} the new member : {dic_member.get('name')}")
     
 #is_18:  
     def is_18(self, member_name):
         for member in self.members:
             if member.get('name') == member_name:
-                if member.get('age', 0) >= 18:
+                if int(member.get('age', 0)) >= 18:
                     return  True
                 else:
                     return False
@@ -38,9 +38,9 @@ if __name__ == "__main__":
     family1.born(name="Paddington" ,age="12", gender="m")
 
 
-    print(f"family member 1 is 18  : {family1.is_18("Lucy")}")
-    print(f"family member 2 is 18 : {family1.is_18("Pastuzo")}")
-    print(f"family member 3 is 18 : {family1.is_18("Paddington")}")
+    print(f"The first family member's age is >= 18  : {family1.is_18("Lucy")}")
+    print(f"The seconde family member's is >= 18 : {family1.is_18("Pastuzo")}")
+    print(f"The third family member's is >= 18 : {family1.is_18("Paddington")}")
 
 
     family1.family_presentation()
