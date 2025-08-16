@@ -6,7 +6,7 @@ class TheIncredibles(Family):
     def __init__(self, last_name):
         super().__init__(last_name)
 
-#2 Add a method called use_power, this method should print the power of a member only if they are over 18 years old. If not raise an exception (look up exceptions) which stated they are not over 18 years old.
+#2 Add a method called use_power, this method should print the power of a member only if they are over 18 years old. If not raise an exception which stated they are not over 18 years old.
     def use_power(self, inc_membre):
         for member in self.members:
             if member.get('name') == inc_membre:
@@ -24,26 +24,30 @@ class TheIncredibles(Family):
         print("Here is our powerful family")
         super().family_presentation()
         for member in self.members:
-            print(f"power : {member.get('power')} , incredible_name : {member.get('incredible_name')}")
+            print(f"power of {member.get('name')}: {member.get('power')} , incredible_name : {member.get('incredible_name')}")
 
 
 
-#4 Create an instance of the Incredibles class, with the “Incredibles” last name, and the below members.
+#4 Create an instance of the Incredibles class
 #Call the incredible_presentation method.
 #Use the born method inherited from the Family class to add Baby Jack with the following power: “Unknown Power”.
 #Call the incredible_presentation method again.
 
 if __name__ == "__main__":
 
-    Incredibles1 = TheIncredibles("Lantern")
-    Incredibles1.born(name="Lucy" ,age="50", gender="Female", is_child=False, power="fly", incredible_name="LFly")
-    Incredibles1.born(name="Pastuzo" ,age="55", gender="Male",  is_child=False, power="read minds", incredible_name="Patsu")
-    Incredibles1.born(name="Paddington" ,age="12", gender="Male", is_child=True, power="speed", incredible_name="flash")
-    Incredibles1.born(name="Jack" ,age="2", gender="Male", is_child=True, power="unknown", incredible_name="Baby Jack")
+    Incredibles1 = TheIncredibles("X-men")
 
-    print(f"The first family member's age is >= 18  : {Incredibles1.is_18("Lucy")} ==> {Incredibles1.use_power("Lucy")}")
-    print(f"The seconde family member's age is >= 18 : {Incredibles1.is_18("Pastuzo")} ==> {Incredibles1.use_power("Pastuzo")}")
-    print(f"The third family member's age is >= 18 : {Incredibles1.is_18("Paddington")} ==> {Incredibles1.use_power("Paddington")}")
-    print(f"The forth family member's age is >= 18 : {Incredibles1.is_18("Jack")} ==> {Incredibles1.use_power("Jack")}")
-
+    Incredibles1.born(name="Ororo Munroe" ,age="48", gender="Female", is_child=False, power="Weather manipulation", incredible_name="Storm")
+    Incredibles1.born(name="Jean" ,age="25", gender="Female", is_child=False, power="telepathy", incredible_name="phoenix")
+    Incredibles1.born(name="Scott" ,age="24", gender="Male",  is_child=False, power="Optic blasts", incredible_name="Cyclops")
+    
+   
+   # print(f"The first family member's age is >= 18 : {Incredibles1.is_18("Ororo Munroe")} ==> {Incredibles1.use_power("Ororo Munroe")}")
+   # print(f"The seconde family member's age is >= 18  : {Incredibles1.is_18("Jean")} ==> {Incredibles1.use_power("Jean")}")
+    print(f"The third family member's age is >= 18 : {Incredibles1.is_18("Scott")} ==> {Incredibles1.use_power("Scott")}")
+    
     Incredibles1.incredible_presentation()
+
+    Incredibles1.born(name="Jack" ,age="2", gender="Male", is_child=True, power="unknown", incredible_name="Baby Jack")
+    Incredibles1.incredible_presentation()
+    print(f"The forth family member's age is >= 18 : {Incredibles1.is_18("Jack")} ==> {Incredibles1.use_power("Jack")}")
