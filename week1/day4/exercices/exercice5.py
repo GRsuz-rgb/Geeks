@@ -1,6 +1,6 @@
 #Exercise 5 : TheIncredibles Family
 #Create a class called TheIncredibles. This class should inherit from the Family class:
-#This is no random family they are an incredible family, therefore the members attributes, will be a list of dictionaries containing the additional keys : power and incredible_name. (See Point 4)
+#  the additional keys : power and incredible_name. (See Point 4)
 from exercice4 import Family
 class TheIncredibles(Family):
     def __init__(self, last_name):
