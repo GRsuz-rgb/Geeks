@@ -26,16 +26,16 @@ class Family():
     def family_presentation(self):
         print(f"Family last name : {self.last_name}")
         for member in self.members:
-            print(f"name : {member.get('name')} , age : {member.get('age')} , gender : {member.get('gender')}")
+            print(f"name : {member.get('name')} , age : {member.get('age')} , gender : {member.get('gender')} , is_child : {member.get('is_child')}")
 
             
 #Create an instance of the Family class, with the last name of your choice, and the below members. Then call all the methods you created in Point 2.
 if __name__ == "__main__":
 
     family1 = Family("Brown")
-    family1.born(name="Lucy" ,age="50", gender="f")
-    family1.born(name="Pastuzo" ,age="55", gender="m")
-    family1.born(name="Paddington" ,age="12", gender="m")
+    family1.born(name="Lucy" ,age="50", gender="Female", is_child=False)
+    family1.born(name="Pastuzo" ,age="55", gender="Male", is_child=False)
+    family1.born(name="Paddington" ,age="12", gender="Male", is_child=True)
 
 
     print(f"The first family member's age is >= 18  : {family1.is_18("Lucy")}")

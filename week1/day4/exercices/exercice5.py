@@ -11,7 +11,7 @@ class TheIncredibles(Family):
         for member in self.members:
             if member.get('name') == inc_membre:
                 if int(member.get('age')) >= 18:
-                    print(f"The power of {member.get('incredible_name')} : {member.get('power')}")
+                    return f"The power of {member.get('incredible_name')} : {member.get('power')}"
                 else:
                     raise Exception(f"{member.get('name')} can't use his/her power, he/she is not over 18 yo ")
 
@@ -22,19 +22,24 @@ class TheIncredibles(Family):
 
     def incredible_presentation(self):
         print("Here is our powerful family")
-        print(f"Incredible Family last name : {self.last_name}")
+        super().family_presentation()
         for member in self.members:
-            print(f"name : {member.get('name')} , age : {member.get('age')} , gender : {member.get('gender')} , is_child : {member.get('is_child')} , power : {member.get('power')} , incredible_name : {member.get('incredible_name')}")
+            print(f"power : {member.get('power')} , incredible_name : {member.get('incredible_name')}")
 
 
+
+#4 Create an instance of the Incredibles class, with the “Incredibles” last name, and the below members.
+#Call the incredible_presentation method.
+#Use the born method inherited from the Family class to add Baby Jack with the following power: “Unknown Power”.
+#Call the incredible_presentation method again.
 
 if __name__ == "__main__":
 
     Incredibles1 = TheIncredibles("Lantern")
-    Incredibles1.born(name="Lucy" ,age="50", gender="Female", is_child=False, power="fly" incredible_name="LFly")
-    Incredibles1.born(name="Pastuzo" ,age="55", gender="Male",  is_child=False, power="read minds" incredible_name="Patsu")
-    Incredibles1.born("Paddington" ,12, "Male", True, "speed", "flash")
-    Incredibles1.born("Jack" ,2, "Male", True, "unknown", "Baby Jack")
+    Incredibles1.born(name="Lucy" ,age="50", gender="Female", is_child=False, power="fly", incredible_name="LFly")
+    Incredibles1.born(name="Pastuzo" ,age="55", gender="Male",  is_child=False, power="read minds", incredible_name="Patsu")
+    Incredibles1.born(name="Paddington" ,age="12", gender="Male", is_child=True, power="speed", incredible_name="flash")
+    Incredibles1.born(name="Jack" ,age="2", gender="Male", is_child=True, power="unknown", incredible_name="Baby Jack")
 
     print(f"The first family member's age is >= 18  : {Incredibles1.is_18("Lucy")} ==> {Incredibles1.use_power("Lucy")}")
     print(f"The seconde family member's age is >= 18 : {Incredibles1.is_18("Pastuzo")} ==> {Incredibles1.use_power("Pastuzo")}")
