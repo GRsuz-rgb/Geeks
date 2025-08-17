@@ -74,7 +74,7 @@ class Song():
         for element in self.lyrics:
             print(element)
 
-# Create an object, for example:
+# Create an object
 stairway = Song(["There’s a lady who's sure","all that glitters is gold", "and she’s buying a stairway to heaven"])
 # Then, call the sing_me_a_song method.
 stairway.sing_me_a_song()
