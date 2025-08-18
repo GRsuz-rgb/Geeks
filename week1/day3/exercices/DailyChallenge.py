@@ -30,7 +30,7 @@ class Farm():
             animal_list.append(animal_name)
         
         #This method should return a string like “McDonald’s farm has cows, goats and sheeps.”.
-        #|--> Join all animals with commas and 'and' before the last one
+        #--> Join all animals with commas and 'and' before the last one
         if len(animal_list) == 1:
             animals_str = animal_list[0]
         else:
