@@ -1,6 +1,6 @@
 import math
 #Step 1: Create the Pagination Class
-class Pagination:
+class Pagination():
 #Step 2: Implement the __init__ Method    
     def __init__(self, items=None, page_size=10):
         self.items = items if items is not None else []
@@ -39,3 +39,28 @@ class Pagination:
 #Step 5: Add a Custom __str__() Method
     def __str__(self):
         return "\n".join(str(item) for item in self.get_visible_items())
+    
+
+
+#Step6: Test your code
+alphabetList = list("abcdefghijklmnopqrstuvwxyz")
+p = Pagination(alphabetList, 4)
+
+print(p.get_visible_items())
+# ['a', 'b', 'c', 'd']
+
+p.next_page()
+print(p.get_visible_items())
+# ['e', 'f', 'g', 'h']
+
+p.last_page()
+print(p.get_visible_items())
+# ['y', 'z']
+
+p.go_to_page(7)
+print(p.current_idx + 1)
+# Output: 7
+
+p.go_to_page(0)
+# Raises ValueError
+
