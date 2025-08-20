@@ -1,6 +1,5 @@
 #Game class
 import random
-
 class Game:
     def get_user_item(self):
         valid_items = ['rock', 'paper', 'scissors']
@@ -8,7 +7,7 @@ class Game:
             user_choice = input("Select rock, paper, or scissors: ").lower()
             if user_choice in valid_items:
                 return user_choice
-            print("Invalid choice! Please select rock, paper, or scissors.")
+            print("Invalid choice. Please select rock, paper, or scissors.")
 
     def get_computer_item(self):
         return random.choice(['rock', 'paper', 'scissors'])
@@ -28,14 +27,14 @@ class Game:
     def play(self):
         user_item = self.get_user_item()
         computer_item = self.get_computer_item()
-        result = self.get_game_result(user_item, computer_item)
+        game_result = self.get_game_result(user_item, computer_item)
         
         print(f"You selected {user_item}. The computer selected {computer_item}. ", end="")
-        if result == 'win':
+        if game_result == 'win':
             print("You win!")
-        elif result == 'loss':
+        elif game_result == 'loss':
             print("You lose!")
         else:
             print("You drew!")
             
-        return result
+        return game_result
