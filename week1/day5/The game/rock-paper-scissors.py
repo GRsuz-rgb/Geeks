@@ -1,9 +1,8 @@
 #functions to show main menu
 from game import Game
-
 def get_user_menu_choice():
     valid_choices = ['p', 's', 'q']
-    print("\nMenu:")
+    print("\tMenu:")
     print("p - Play a new game")
     print("s - Show scores")
     print("q - Quit")
@@ -14,7 +13,7 @@ def get_user_menu_choice():
     return choice
 
 def print_results(results):
-    print("\nGame Results Summary:")
+    print("\tGame Results :")
     print(f"Wins: {results['win']}")
     print(f"Losses: {results['loss']}")
     print(f"Draws: {results['draw']}")
