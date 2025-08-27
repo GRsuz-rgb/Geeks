@@ -1,4 +1,3 @@
-
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(100) UNIQUE NOT NULL,
@@ -15,7 +14,7 @@ CREATE TABLE books (
 
 CREATE TABLE authors (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
+    name VARCHAR(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE books_authors (
@@ -24,9 +23,12 @@ CREATE TABLE books_authors (
     PRIMARY KEY (book_id, author_id)
 );
 
--- database seeding
+-- Index pour la recherche rapide par titre
+CREATE INDEX idx_books_title ON books (title);
+
+-- Database seeding
 INSERT INTO users (username, password) VALUES
-('user', 'user1234');
+('user', 'user1234'); -- ⚠️ à remplacer par un hash bcrypt en prod
 
 INSERT INTO books (title, publication_year, isbn) VALUES
 ('1984', 1949, '9780451524935'),
@@ -54,4 +56,4 @@ INSERT INTO authors (name) VALUES
 
 INSERT INTO books_authors (book_id, author_id) VALUES
 (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
-(6, 6), (7, 3), (8, 7), (9, 8), (10, 9);
+(6, 6), (7, 1), (8, 7), (9, 8), (10, 9);

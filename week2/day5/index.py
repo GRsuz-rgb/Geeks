@@ -14,86 +14,127 @@ app.secret_key = os.getenv('SECRET_KEY')
 def index():
     conn = connect_to_db()
     if not conn:
-        return render_template('index.html', movies=[])
+        return render_template('index.html', books=[], authors=[])
 
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM movies")
-    movies = cursor.fetchall()
+    cursor.execute("SELECT * FROM books")
+    books = cursor.fetchall()
+    
+    cursor.execute("SELECT * FROM authors")
+    authors = cursor.fetchall()
 
-    return render_template('index.html', movies=movies)
+    conn.close()
+    return render_template('index.html', books=books, authors=authors)
 
 
-@app.route('/movies/<int:id>', methods=['GET'])
-def movie_detail(id):
+@app.route('/books/<int:id>', methods=['GET'])
+def book_detail(id):
     conn = connect_to_db()
     if not conn:
-        return render_template('movie_detail.html', movie=None)
+        return render_template('details.html', book=None)
 
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM movies WHERE id = %s", (id,))
-    movie = cursor.fetchone()
-    return render_template('movie_detail.html', movie=movie)
+    cursor.execute("SELECT * FROM books WHERE id = %s", (id,))
+    book = cursor.fetchone()
+    conn.close()
+    return render_template('details.html', book=book)
 
 
 @app.route('/create', methods=['POST', 'GET'])
 def create():
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM authors")
+    authors = cursor.fetchall()
+
     if request.method == 'POST':
         payload = {
-            'title': request.form.get('title', 'no title'),
-            'description': request.form.get('description', 'no description'),
-            'rating': request.form.get('rating', 0),
-            'year': request.form.get('year', 0),
-            'genre': request.form.get('genre', 'no genre')
+            'title': request.form.get('title', ''),
+            'publication_year': request.form.get('publication_year', ''),
+            'isbn': request.form.get('isbn', ''),
+            'author_ids': request.form.getlist('authors')
         }
 
         for key, value in payload.items():
             if not value:
-                flash(f'{key} is required', 'red')
-                flash(f'Please fill in all fields', 'red')
-                return render_template('create.html')
+                flash(f'{key} is required', 'error')
+                return render_template('create.html', authors=authors)
+    
+        try:
+            publication_year = int(payload['publication_year'])
+            if len(payload['isbn']) != 13 or not payload['isbn'].isdigit():
+                raise ValueError('Invalid ISBN')
+        except ValueError:
+            flash('Invalid publication year or ISBN!', 'error')
+            return render_template('create.html', authors=authors)
+        
+        cursor.execute(
+            "INSERT INTO books (title, publication_year, isbn) VALUES (%s, %s, %s) RETURNING id",
+            (payload['title'], payload['publication_year'], payload['isbn'])
+        )
+        book_id = cursor.fetchone()[0]
 
-        conn = connect_to_db()
-        if not conn:
-            return render_template('create.html', error='Failed to connect to database')
-
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO movies (title, description, rating, year, genre) VALUES (%s, %s, %s, %s, %s)",
-                       (payload['title'], payload['description'], payload['rating'], payload['year'], payload['genre']))
+        for author_id in payload['author_ids']:
+            cursor.execute("INSERT INTO books_authors (book_id, author_id) VALUES (%s, %s)", (book_id, author_id))
+        
         conn.commit()
         conn.close()
 
-        flash(f'Movie created successfully', 'blue')
+        flash('Book created successfully', 'success')
         return redirect(url_for('index'))
-
-    return render_template('create.html')
+        
+    conn.close()
+    return render_template('create.html', authors=authors)
 
 
 @app.route('/edit/<int:id>', methods=['POST', 'GET'])
 def edit(id):
     conn = connect_to_db()
     if not conn:
-        return render_template('edit.html', movie=None)
+        return render_template('edit.html', book=None, authors=[])
 
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM movies WHERE id = %s", (id,))
-    movie = cursor.fetchone()
+    cursor.execute("SELECT * FROM books WHERE id = %s", (id,))
+    book = cursor.fetchone()
+    cursor.execute("SELECT * FROM authors")
+    authors = cursor.fetchall()
 
     if request.method == 'POST':
-        title = request.form.get('title', 'no title')
-        description = request.form.get('description', 'no description')
-        rating = request.form.get('rating', 0)
-        year = request.form.get('year', 0)
-        genre = request.form.get('genre', 'no genre')
+        payload = {
+            'title': request.form.get('title', ''),
+            'publication_year': request.form.get('publication_year', ''),
+            'isbn': request.form.get('isbn', ''),
+            'author_ids': request.form.getlist('authors')
+        }
 
-        cursor.execute("UPDATE movies SET title = %s, description = %s, rating = %s, year = %s, genre = %s WHERE id = %s",
-                       (title, description, rating, year, genre, id))
+        for key, value in payload.items():
+            if not value:
+                flash(f'{key.capitalize()} is required', 'error')
+                return render_template('edit.html', book=book, authors=authors)
+
+        try:
+            publication_year = int(payload['publication_year'])
+            if len(payload['isbn']) != 13 or not payload['isbn'].isdigit():
+                raise ValueError('Invalid ISBN')
+        except ValueError:
+            flash('Invalid publication year or ISBN!', 'error')
+            return render_template('edit.html', book=book, authors=authors)
+
+        cursor.execute(
+            "UPDATE books SET title = %s, publication_year = %s, isbn = %s WHERE id = %s",
+            (payload['title'], payload['publication_year'], payload['isbn'], id)
+        )
+        cursor.execute("DELETE FROM books_authors WHERE book_id = %s", (id,))
+        for author_id in payload['author_ids']:
+            cursor.execute("INSERT INTO books_authors (book_id, author_id) VALUES (%s, %s)", (id, author_id))
+
         conn.commit()
         conn.close()
+        flash('Book updated successfully', 'success')
+        return redirect(url_for('book_detail', id=id))
 
-        flash(f'Movie updated successfully', 'blue')
-        return redirect(url_for('movie_detail', id=id))
-
-    return render_template('edit.html', movie=movie)
+    conn.close()
+    return render_template('edit.html', book=book, authors=authors)
 
 
 @app.route('/delete/<int:id>', methods=['POST'])
@@ -103,11 +144,29 @@ def delete(id):
         return redirect(url_for('index'))
 
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM movies WHERE id = %s", (id,))
+    cursor.execute("DELETE FROM books WHERE id = %s", (id,))
     conn.commit()
     conn.close()
 
+    flash('Book deleted successfully', 'warning')
     return redirect(url_for('index'))
+
+
+@app.route('/search', methods=['GET'])
+def search():
+    search_query = request.args.get('search', '')
+    query = "SELECT * FROM books"
+    params = []
+    if search_query:
+        query += " WHERE title ILIKE %s"
+        params.append(f'%{search_query}%')
+
+    conn = connect_to_db()
+    cursor = conn.cursor()    
+    cursor.execute(query, params)
+    books = cursor.fetchall()
+    conn.close()
+    return render_template('index.html', books=books, search_query=search_query)
 
 
 if __name__ == '__main__':
