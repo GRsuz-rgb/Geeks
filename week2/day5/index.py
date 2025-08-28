@@ -42,6 +42,10 @@ def book_detail(id):
 @app.route('/create', methods=['POST', 'GET'])
 def create():
     conn = connect_to_db()
+    if not conn:
+        return render_template('index.html', books=[], authors=[])
+
+   # conn = connect_to_db()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM authors")
     authors = cursor.fetchall()
@@ -77,7 +81,7 @@ def create():
             cursor.execute("INSERT INTO books_authors (book_id, author_id) VALUES (%s, %s)", (book_id, author_id))
         
         conn.commit()
-          
+        conn.close()  
         flash('Book created successfully', 'success')
         return redirect(url_for('index'))
         
@@ -153,6 +157,9 @@ def delete(id):
 @app.route('/search', methods=['GET'])
 def search():
     conn = connect_to_db()
+    if not conn:
+        return render_template('index.html', books=[], authors=[])
+
     search_query = request.args.get('search', '')
     query = "SELECT * FROM books"
     params = []
@@ -170,6 +177,9 @@ def search():
 @app.route("/stats")
 def stats():
     conn = connect_to_db()
+    if not conn:
+        return render_template('index.html', books=[], authors=[])
+
     page = request.args.get("page", 1, type=int)   # Numéro de page (défaut = 1)
     per_page = 6  # 6 items par page
     offset = (page - 1) * per_page
