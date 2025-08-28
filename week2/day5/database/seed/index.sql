@@ -28,7 +28,7 @@ CREATE INDEX idx_books_title ON books (title);
 
 -- Database seeding
 INSERT INTO users (username, password) VALUES
-('user', 'user1234'); -- ⚠️ à remplacer par un hash bcrypt en prod
+('user', 'user1234'); 
 
 INSERT INTO books (title, publication_year, isbn) VALUES
 ('1984', 1949, '9780451524935'),

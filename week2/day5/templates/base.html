@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIBRARY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- navbar -->
+    <nav class="bg-yellow-700 py-2 max-xl:px-3">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-book text-white text-2xl"></i>
+          <a href="/" class="text-white text-2xl font-bold">LIBRARY</a>
+        </div>
+        
+          <a
+            href="/create"
+            class="bg-yellow-50 text-gray-500 px-4 py-2 rounded-md flex items-center gap-2"
+          >
+            <i class="bi bi-plus-lg"></i>
+            <span class="font-semibold">New Book</span>
+          </a>
+
+          <a
+            href="/search"
+            class="bg-yellow-50 text-gray-500 px-4 py-2 rounded-md flex items-center gap-2"
+          >
+            <i class="bi bi-search"></i>
+            <span class="font-semibold">Search Book</span>
+          </a>
+
+          <a
+            href="/stats"
+            class="bg-yellow-50 text-gray-500 px-4 py-2 rounded-md flex items-center gap-2"
+          >
+            <i class="bi bi-pencil-square"></i>
+            <span class="font-semibold">Stats</span>
+          </a>
+         
+      </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="max-w-7xl mx-auto my-4">
+      {% for category, message in messages %}
+      <div
+        class="bg-{{ category }}-100 flex items-center gap-2 justify-between border border-{{ category }}-400 text-{{ category }}-700 px-4 py-3 rounded relative"
+        role="alert"
+      >
+        <span class="block sm:inline">{{ message }}</span>
+        <i
+          class="bi bi-x-lg cursor-pointer"
+          onclick="this.parentElement.remove()"
+        ></i>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %} {% block content %} {% endblock %}
+  </body>
+</html>
