@@ -15,7 +15,7 @@ def index():
     if not conn:
         return render_template('index.html', books=[], authors=[])
 
-    cursor = conn.cursor(cursor_factory=RealDictCursor)
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM books")
     books = cursor.fetchall()
     
