@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+
+<main class="max-w-7xl mx-auto my-10">
+  <form
+    action="/edit/{{ book.id }}"
+    method="post"
+    class="flex flex-col gap-4 max-w-md mx-auto mt-4 p-4 bg-white border border-gray-200 rounded-md"
+  >
+    <h1 class="text-2xl font-bold">Edit Book</h1>
+    <input
+      type="text"
+      name="title"
+      value="{{ book.title }}"
+      placeholder="Title"
+      class="border border-gray-200 rounded-md p-2"
+    />
+    <input
+      type="number"
+      name="publication_year"
+      value="{{ book.publication_year }}"
+      placeholder="publication Year"
+      min="1900"
+      max="2025"
+      class="border border-gray-200 rounded-md p-2"
+    />
+    <input
+      type="number"
+      name="creation_time"
+      value="{{ book.creation_time }}"
+      placeholder="Creation Time"
+      class="border border-gray-200 rounded-md p-2"
+    />
+   
+     <input
+      type="text"
+      name="isbn"
+      value="{{ book.isbn}}"
+      placeholder="ISBN"
+      class="border border-gray-200 rounded-md p-2"
+    />
+   <!-- <textarea
+      name="description"
+      placeholder="Description"
+      rows="6"
+      class="border border-gray-200 rounded-md p-2"
+    >
+{{ book.description }}</textarea
+    > -->
+    <button
+      type="submit"
+      class="bg-gray-600 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2"
+    >
+      <i class="bi bi-plus-lg"></i>
+      Edit
+    </button>
+  </form>
+</main>
+{% endblock %}

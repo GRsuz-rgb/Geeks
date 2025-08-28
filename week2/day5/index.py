@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from index import connect_to_db
+from database.index import connect_to_db
 import os
 from dotenv import load_dotenv
 
@@ -154,6 +154,7 @@ def delete(id):
 
 @app.route('/search', methods=['GET'])
 def search():
+    conn = connect_to_db()
     search_query = request.args.get('search', '')
     query = "SELECT * FROM books"
     params = []
@@ -161,13 +162,33 @@ def search():
         query += " WHERE title ILIKE %s"
         params.append(f'%{search_query}%')
 
-    conn = connect_to_db()
     cursor = conn.cursor()    
     cursor.execute(query, params)
     books = cursor.fetchall()
     conn.close()
     return render_template('index.html', books=books, search_query=search_query)
 
+
+@app.route("/stats")
+def stats():
+    conn = connect_to_db()
+    page = request.args.get("page", 1, type=int)   # Numéro de page (défaut = 1)
+    per_page = 6  # 6 items par page
+    offset = (page - 1) * per_page
+
+    
+    books = conn.execute("SELECT * FROM books LIMIT ? OFFSET ?", (per_page, offset)).fetchall()
+    total_books = conn.execute("SELECT COUNT(*) as count FROM books").fetchone()["count"]
+    conn.close()
+
+    total_pages = (total_books + per_page - 1) // per_page  # arrondi supérieur
+
+    return render_template(
+        "stats.html",
+        books=books,
+        page=page,
+        total_pages=total_pages
+    )
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
