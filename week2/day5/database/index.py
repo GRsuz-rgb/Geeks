@@ -9,11 +9,11 @@ load_dotenv()
 def connect_to_db():
     try:
         conn = connect(
-            host=os.getenv("localhost"),
-            database=os.getenv("libraryDb"),
-            user=os.getenv("postgres"),
-            password=os.getenv("postgresql"),
-            sslmode=os.getenv("PGSSLMODE"),
+            host=os.getenv("PGHOST"),
+            database=os.getenv("PGDATABASE"),
+            user=os.getenv("PGUSER"),
+            password=os.getenv("PGPASSWORD"),
+            sslmode=os.getenv("PGSSLMODE") or "prefer",
             connection_factory=RealDictConnection,
         )
         return conn

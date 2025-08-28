@@ -2,8 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from database.index import connect_to_db
 import os
 from dotenv import load_dotenv
-
-load_dotenv()
+from  psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
 
@@ -16,7 +15,7 @@ def index():
     if not conn:
         return render_template('index.html', books=[], authors=[])
 
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=RealDictCursor)
     cursor.execute("SELECT * FROM books")
     books = cursor.fetchall()
     
@@ -78,8 +77,7 @@ def create():
             cursor.execute("INSERT INTO books_authors (book_id, author_id) VALUES (%s, %s)", (book_id, author_id))
         
         conn.commit()
-        conn.close()
-
+          
         flash('Book created successfully', 'success')
         return redirect(url_for('index'))
         
