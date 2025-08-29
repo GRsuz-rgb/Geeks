@@ -7,7 +7,7 @@
   >
     <div class="relative overflow-hidden rounded-md">
       <img
-        src="https://openlibrary.org/1000/800?random={{ book.id }}"
+        src="https://picsum.photos/1000/800?random={{ book.id }}"
         alt="{{ book.title }}"
         class="w-full h-96 object-cover rounded-md group-hover:scale-105 transition-all duration-300"
       />
@@ -23,11 +23,6 @@
       <h2 class="text-sm text-gray-500 whitespace-nowrap">
         {{ book.creation_time }} | {{ book.isbn}}
       </h2>
-    <!--
-    </div>
-    <p class="text-gray-500 line-clamp-2">{{ book.description }}</p>
-    <div class="flex items-center gap-2 mt-4">
-    -->
       <a
         href="/edit/{{ book.id }}"
         class="bg-gray-600 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2"

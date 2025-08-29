@@ -43,7 +43,7 @@ def book_detail(id):
 def create():
     conn = connect_to_db()
     if not conn:
-        return render_template('index.html', books=[], authors=[])
+        return render_template('create.html', authors=[])
 
    # conn = connect_to_db()
     cursor = conn.cursor()
@@ -158,7 +158,7 @@ def delete(id):
 def search():
     conn = connect_to_db()
     if not conn:
-        return render_template('index.html', books=[], authors=[])
+        return render_template('index.html', books=[])
 
     search_query = request.args.get('search', '')
     query = "SELECT * FROM books"
@@ -178,7 +178,7 @@ def search():
 def stats():
     conn = connect_to_db()
     if not conn:
-        return render_template('index.html', books=[], authors=[])
+        return render_template('stats.html', books=[], page=1 , total_pages=0)
 
     page = request.args.get("page", 1, type=int)   # Numéro de page (défaut = 1)
     per_page = 6  # 6 items par page
