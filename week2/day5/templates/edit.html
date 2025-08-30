@@ -3,7 +3,7 @@
 
 <main class="max-w-7xl mx-auto my-10">
   <form
-    action="/edit/{{ book.id }}"
+    action="{{ url_for('edit', id=book.id) }}"
     method="post"
     class="flex flex-col gap-4 max-w-lg mx-auto mt-4 p-6 bg-white border border-gray-200 rounded-md shadow"
   >
@@ -69,7 +69,7 @@
         required
       >
         {% for author in authors %}
-        <option value="{{ author.id }}" {% if author.id == book.author_id %}selected{% endif %}>
+        <option value="{{ author.id }}" {% if author.id in book.authors|map(attribute='id') %}selected{% endif %}>
           {{ author.name }}
         </option>
         {% endfor %}
