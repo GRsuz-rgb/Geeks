@@ -1,50 +1,108 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 
 <main class="max-w-7xl mx-auto my-10">
   <form
     action="/edit/{{ book.id }}"
     method="post"
-    class="flex flex-col gap-4 max-w-md mx-auto mt-4 p-4 bg-white border border-gray-200 rounded-md"
+    class="flex flex-col gap-4 max-w-lg mx-auto mt-4 p-6 bg-white border border-gray-200 rounded-md shadow"
   >
-    <h1 class="text-2xl font-bold">Edit Book</h1>
-    <input
-      type="text"
-      name="title"
-      value="{{ book.title }}"
-      placeholder="Title"
-      class="border border-gray-200 rounded-md p-2"
-    />
-    <input
-      type="number"
-      name="publication_year"
-      value="{{ book.publication_year }}"
-      placeholder="publication Year"
-      min="1900"
-      max="2025"
-      class="border border-gray-200 rounded-md p-2"
-    />
-    <input
-      type="number"
-      name="creation_time"
-      value="{{ book.creation_time }}"
-      placeholder="Creation Time"
-      class="border border-gray-200 rounded-md p-2"
-    />
-   
-     <input
-      type="text"
-      name="isbn"
-      value="{{ book.isbn}}"
-      placeholder="ISBN"
-      class="border border-gray-200 rounded-md p-2"
-    />
+    <h1 class="text-2xl font-bold mb-2">Edit Book</h1>
+
+    <!-- Title -->
+    <label class="flex flex-col">
+      <span class="text-sm font-medium text-gray-700">Title</span>
+      <input
+        type="text"
+        name="title"
+        value="{{ book.title }}"
+        placeholder="Book Title"
+        class="border border-gray-200 rounded-md p-2"
+        required
+      />
+    </label>
+
+    <!-- Publication year -->
+    <label class="flex flex-col">
+      <span class="text-sm font-medium text-gray-700">Publication Year</span>
+      <input
+        type="number"
+        name="publication_year"
+        value="{{ book.publication_year }}"
+        placeholder="Publication Year"
+        min="1900"
+        max="2025"
+        class="border border-gray-200 rounded-md p-2"
+        required
+      />
+    </label>
+
+    <!-- Creation time -->
+    <label class="flex flex-col">
+      <span class="text-sm font-medium text-gray-700">Creation Time</span>
+      <input
+        type="datetime-local"
+        name="creation_time"
+        value="{{ book.creation_time }}"
+        class="border border-gray-200 rounded-md p-2"
+      />
+    </label>
+
+    <!-- ISBN -->
+    <label class="flex flex-col">
+      <span class="text-sm font-medium text-gray-700">ISBN</span>
+      <input
+        type="text"
+        name="isbn"
+        value="{{ book.isbn }}"
+        placeholder="ISBN"
+        class="border border-gray-200 rounded-md p-2"
+      />
+    </label>
+
+    <!-- Author -->
+    <label class="flex flex-col">
+      <span class="text-sm font-medium text-gray-700">Author</span>
+      <select
+        name="author_id"
+        class="border border-gray-200 rounded-md p-2"
+        required
+      >
+        {% for author in authors %}
+        <option value="{{ author.id }}" {% if author.id == book.author_id %}selected{% endif %}>
+          {{ author.name }}
+        </option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <!-- Categories -->
+    <label class="flex flex-col">
+      <span class="text-sm font-medium text-gray-700">Categories</span>
+      <div class="flex flex-wrap gap-2">
+        {% for cat in categories %}
+        <label class="flex items-center gap-1 text-sm">
+          <input
+            type="checkbox"
+            name="categories"
+            value="{{ cat.id }}"
+            {% if cat.id in book_categories %}checked{% endif %}
+          />
+          {{ cat.name }}
+        </label>
+        {% endfor %}
+      </div>
+    </label>
+
+    <!-- Submit -->
     <button
       type="submit"
-      class="bg-gray-600 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2"
+      class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 transition-all"
     >
-      <i class="bi bi-plus-lg"></i>
-      Edit
+      <i class="bi bi-pencil-fill"></i>
+      Save Changes
     </button>
   </form>
 </main>
+
 {% endblock %}
