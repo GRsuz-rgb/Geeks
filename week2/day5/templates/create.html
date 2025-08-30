@@ -1,47 +1,88 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+{% block content %}
 
 <main class="max-w-7xl mx-auto my-10">
   <form
-    action="/create"
+    action="{{ url_for('create') }}"
     method="post"
-    class="flex flex-col gap-4 max-w-md mx-auto mt-4 p-4 bg-white border border-gray-200 rounded-md"
+    class="flex flex-col gap-4 max-w-lg mx-auto mt-4 p-6 bg-white border border-gray-200 rounded-lg shadow-sm"
   >
-    <h1 class="text-2xl font-bold">Create Book</h1>
+    <h1 class="text-2xl font-bold text-gray-700">Add a New Book</h1>
+
+    <!-- Title -->
     <input
       required
       type="text"
       name="title"
-      placeholder="Title"
-      class="border border-gray-200 rounded-md p-2"
+      placeholder="Book Title"
+      class="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-yellow-500 outline-none"
     />
+
+    <!-- ISBN -->
     <input
-      type="number"
-      name="publication_year"
-      placeholder="publication Year"
-      min="1900"
-      max="2025"
-      class="border border-gray-200 rounded-md p-2"
-    />
-    <input
-      type="number"
-      name="creation_time"
-      placeholder="Creation Time"
-      class="border border-gray-200 rounded-md p-2"
-    />
-    <input
+      required
       type="text"
       name="isbn"
       placeholder="ISBN"
-      class="border border-gray-200 rounded-md p-2"
+      maxlength="13"
+      class="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-yellow-500 outline-none"
     />
 
+    <!-- Publication Year -->
+    <input
+      type="number"
+      name="publication_year"
+      placeholder="Publication Year"
+      min="1800"
+      max="2025"
+      class="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-yellow-500 outline-none"
+    />
+
+    <!-- Creation Time (optional: could be auto in DB) 
+    <input
+      type="datetime-local"
+      name="creation_time"
+      placeholder="Creation Time"
+      class="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-yellow-500 outline-none"
+    />
+    -->
+    <!-- Author (Foreign Key) -->
+    <select
+      name="author_id"
+      required
+      class="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-yellow-500 outline-none"
+    >
+      <option value="" disabled selected>-- Select Author --</option>
+      {% for author in authors %}
+      <option value="{{ author.id }}">{{ author.name }}</option>
+      {% endfor %}
+    </select>
+
+    <!-- Category (Many-to-Many) -->
+    <label class="font-semibold text-gray-600">Categories:</label>
+    <div class="flex flex-wrap gap-2">
+      {% for category in categories %}
+      <label class="flex items-center gap-1">
+        <input
+          type="checkbox"
+          name="categories"
+          value="{{ category.id }}"
+          class="rounded text-yellow-600 focus:ring-yellow-500"
+        />
+        {{ category.name }}
+      </label>
+      {% endfor %}
+    </div>
+
+    <!-- Submit -->
     <button
       type="submit"
-      class="bg-yellow-600 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2"
+      class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 transition-all duration-200"
     >
       <i class="bi bi-plus-lg"></i>
-      Create
+      Create Book
     </button>
   </form>
 </main>
+
 {% endblock %}

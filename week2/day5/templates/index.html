@@ -1,36 +1,33 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 
 <main class="max-w-7xl mx-auto my-10">
   <h1 class="text-2xl font-bold">Books</h1>
 
-
-<!-- Barre de recherche -->
-  <form method="get" class="mb-6">
+  <!-- search -->
+  <form method="get" action="{{ url_for('search') }}" class="mb-6 flex gap-2">
     <input
       type="text"
       name="search"
-      value="{{ search }}"
+      value="{{ search_query if search_query else '' }}"
       placeholder="Search books..."
-      class="border p-2 rounded-md w-1/3"
+      class="border border-gray-300 rounded-md px-3 py-2 w-full"
     />
-    <button
-      type="submit"
-      class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-900 transition"
-    >
-      Search
+    <button type="submit" class="bg-yellow-600 text-white px-4 py-2 rounded-md">
+      <i class="bi bi-search"></i> Search
     </button>
   </form>
 
-<!--Liste des livres-->
+ <!-- Grille des livres -->
   <div class="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {% for book in books %}
-    <a href="/books/{{ book.id }}">
-      <div
-        class="bg-white border cursor-pointer group border-gray-200 rounded-md p-4 hover:shadow-md transition-all duration-300"
-      >
+    <div
+      class="bg-white border cursor-pointer group border-gray-200 rounded-md p-4 hover:shadow-md transition-all duration-300"
+    >
+      <a href="{{ url_for('details', id=book.id) }}">
         <div class="relative">
           <img
-            src="https://openlibrary.org/400/600?random={{ book.id }}"
+            src="https://picsum.photos/400/600?random={{ book.id }}"
             alt="{{ book.title }}"
             class="w-full h-48 object-cover rounded-md group-hover:scale-105 transition-all duration-300"
           />
@@ -47,38 +44,8 @@
             {{ book.creation_time }} | {{ book.isbn }}
           </h2>
         </div>
-        {% if book.description %}
-        <p class="text-gray-500 line-clamp-2 mt-2">
-          {{ book.description }}
-        </p>
-        {% endif %} 
-    </a>
-    <!-- Boutons Edit/Delete -->
-      <div class="flex justify-between mt-4">
-        <a
-          href="{{ url_for('update_book', id=book.id) }}"
-          class="text-blue-600 hover:underline"
-          >Edit</a
-        >
-        <a
-          href="{{ url_for('delete_book', id=book.id) }}"
-          onclick="return confirm('Delete this book?')"
-          class="text-red-600 hover:underline"
-          >Delete</a
-        >
-      </div>
-      </div> 
-    {% endfor %}
-  </div>
-  <!-- Pagination -->
-  <div class="mt-6 flex space-x-2">
-    {% for i in range(1, pages+1) %}
-    <a
-      href="?page={{ i }}&search={{ search }}"
-      class="px-3 py-1 rounded {{ 'bg-blue-600 text-white' if i==current else 'bg-gray-200' }}"
-    >
-      {{ i }}
-    </a>
+      </a>
+    </div>
     {% endfor %}
   </div>
 </main>
