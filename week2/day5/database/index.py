@@ -16,6 +16,8 @@ def connect_to_db():
             sslmode=os.getenv("PGSSLMODE") or "prefer",
             connection_factory=RealDictConnection,
         )
+        
+
         return conn
     except Exception as e:
         print(e)
