@@ -24,7 +24,8 @@
     <div
       class="bg-white border cursor-pointer group border-gray-200 rounded-md p-4 hover:shadow-md transition-all duration-300"
     >
-      <a href="{{ url_for('details', id=book.id) }}">
+      <a href="{{ url_for('book_detail', id=book.id) }}">
+
         <div class="relative">
           <img
             src="https://picsum.photos/400/600?random={{ book.id }}"
@@ -41,7 +42,7 @@
         <div class="flex items-baseline justify-between gap-4">
           <h2 class="text-lg font-bold mt-2 line-clamp-1">{{ book.title }}</h2>
           <h2 class="text-sm text-gray-500 whitespace-nowrap">
-            {{ book.creation_time }} | {{ book.isbn }}
+            {{ book.publication_year }} | {{ book.isbn }}
           </h2>
         </div>
       </a>
