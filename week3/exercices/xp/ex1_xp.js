@@ -1,4 +1,3 @@
-/*
 //Exercise 1 : List of people
 const people = ["Greg", "Mary", "Devon", "James"];
 console.log(people);
@@ -60,7 +59,7 @@ for(let i=0; i< colors.length; i++){
 }
 
 
-
+/*
 //Exercise 3 : Repeat the question
 
 //1. Prompt the user for a number.
@@ -74,9 +73,9 @@ while( n < 10){
    n = Number(prompt("Enter auther number : "));
    console.log(n);
 }
+
 */
 
-/*
 //Exercise 4 : Building Management
 const building = {
     numberOfFloors: 4,
@@ -149,17 +148,19 @@ for (let key in details){
 }
 console.log(expression);
 
-*/
+
 
 //Exercise 7 : Secret Group
 const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
 //1. 
 names.sort();
+let m = "";
 for(let i=0; i < names.length; i++){
-   let n = names[i].substring(0,1);
-   console.log(n);
+   na = names[i].substring(0,1);
+   console.log(na);
+   m += na;
 }
-
+console.log(m);
 
 
 
