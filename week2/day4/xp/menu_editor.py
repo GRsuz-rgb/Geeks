@@ -1,7 +1,7 @@
 from menu_item import MenuItem
 from menu_manager import MenuManager
 
-def show_user_menu(self):
+def show_user_menu():
     while True:
         print("\n****** MENU MANAGER ******")
         print("(V) View an Item")
@@ -34,27 +34,29 @@ def show_user_menu(self):
         else:
             print("Invalid choice.Try again!")
 
-def add_item_to_menu(self):
+def add_item_to_menu():
     name = input("Enter item name : ")
     price = int(input("Enter item price : "))
     item = MenuItem(name, price)
     item.save()
 
-def remove_item_from_menu(self):
+def remove_item_from_menu():
     name = input("Enter item name to delete : ")
     item = MenuItem(name)
     item.delete()
 
-def update_item_from_menu(self):
+def update_item_from_menu():
     old_name = input("Enter the current name of the item :")
     new_name = input("Enter the new name : ")
     new_price = int(input("Enter the new price : "))
     item = MenuItem(old_name, 0)
     item.update(new_name, new_price)
 
-def show_restaurant_menu(self):
+def show_restaurant_menu():
     print("\n****Restaurant Menu****")
     items = MenuManager.all_items()
     for item in items: 
         print(f"{item.name} : {item.price}")
-        
+
+
+show_user_menu()
