@@ -19,8 +19,16 @@ planets.forEach(planet => {
     DivPlanet.textContent = planet.name;
 //4.Finally append each div to the <section> in the HTML 
     section.appendChild(DivPlanet);
-    
+//5. Do the same process to create the moons.
+//5... Should you still use an array for the planets ? Or an array of objects ?
+    // I'll still use the same for planets
+    for(let i = 0; i < planet.moons; i++){
+        const Divmoon = document.createElement("div");
+        Divmoon.classList.add("moon");
 
+        DivPlanet.appendChild(Divmoon);
+    }
+     
 });
 
 
