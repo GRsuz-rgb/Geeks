@@ -39,7 +39,7 @@
         let row = document.createElement("tr");
 //Fill initial empty cells 
         for (let i = 0; i < firstDay; i++) {
-            row.appendChild(document.createElement("td"));
+            row.appendChild(document.createElement("td")); //creation de case vide en se basant sur le firstDay pour determiner le nombre de cellule vide
         }
 //Fill actual days
         for (let day = 1; day <= daysInMonth; day++) {
