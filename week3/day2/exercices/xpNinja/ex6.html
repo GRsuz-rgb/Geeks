@@ -1,11 +1,14 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
   <style>
     table {
       border-collapse: collapse;
     }
-    td {
+    td, th {
       border: 1px solid black;
       padding: 3px 5px;
     }
@@ -13,7 +16,7 @@
 </head>
 
 <body>
-  <div id="clendar"></div>
+  <div id="calendar"></div>
   <script>
     function createCalendar(year, month) {
         let element = document.getElementById("calendar");
@@ -24,7 +27,7 @@
         weekdays.forEach(day => {
             let th = document.createElement("th");
             th.textContent = day;
-            rowHeader = appendChild(th);
+            rowHeader.appendChild(th);
         });
         table.appendChild(rowHeader);
 //First day of the month 
