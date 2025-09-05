@@ -12,9 +12,9 @@ function biggestNumberInArray(arrayNumber) {
 }
 
 
-const array = [-1,0,3,100, 99, 2, 99] ;// should return 100 
-const array2 = ['a', 3, 4, 2]; // should return 4 
-const array3 = []; // should return 0
+const array = [-1,0,3,100, 99, 2, 99] ;// return 100 
+const array2 = ['a', 3, 4, 2]; // return 4 
+const array3 = []; // return 0
 
 console.log(biggestNumberInArray(array));
 console.log(biggestNumberInArray(array2));
