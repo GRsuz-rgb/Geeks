@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid black;
+      padding: 3px 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="clendar"></div>
+  <script>
+    function createCalendar(year, month) {
+        let element = document.getElementById("calendar");
+        let table = document.createElement("table");
+//weekday headers 
+        let weekdays = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"];
+        let rowHeader = document.createElement("tr");
+        weekdays.forEach(day => {
+            let th = document.createElement("th");
+            th.textContent = day;
+            rowHeader = appendChild(th);
+        });
+        table.appendChild(rowHeader);
+//First day of the month 
+        let date = new Date(year, month - 1, 1);
+        let firstDay = (date.getDay() + 6) % 7;
+//number of days in this month
+        let daysInMonth = new Date(year, month, 0).getDate();
+
+        let row = document.createElement("tr");
+//Fill initial empty cells 
+        for (let i = 0; i < firstDay; i++) {
+            row.appendChild(document.createElement("td"));
+        }
+//Fill actual days
+        for (let day = 1; day <= daysInMonth; day++) {
+            let td = document.createElement("td");
+            td.textContent = day;
+            row.appendChild(td);
+            //If sunday, start new row
+            if((firstDay + day) % 7 === 0) {
+                table.appendChild(row);
+                row = document.createElement("tr");
+            }
+        }
+        //Append last row if not complete
+        if (row.children.length > 0) {
+            table.appendChild(row);
+        }
+
+        element.innerHTML = ""; //clear previous calendar
+        element.appendChild(table);
+    }
+
+    createCalendar(2013, 6); //June 2013
+  </script>
+</body>
+</html>
