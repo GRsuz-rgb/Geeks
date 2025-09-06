@@ -10,7 +10,7 @@ def get_connection():
     return psycopg2.connect(
         dbname = os.getenv("PGDATABASE", "countries"),
         user = os.getenv("PGUSER", "postgres"),
-        password = os.dotenv("PGPASSWORD", "postgresql"),
+        password = os.getenv("PGPASSWORD", "postgresql"),
         host = os.getenv("PGHOST", "localhost"),
         port = os.getenv("PGPORT", 5432)
     )
@@ -33,7 +33,7 @@ def insert_countries(countries):
         population = country.get("population", 0)
 
         cur.execute("""
-            INSERT INTO countries (name, capital, flag, subregion, population)    )
+            INSERT INTO countries (name, capital, flag, subregion, population)
             VALUES (%s, %s, %s, %s, %s)
             """, (name, capital, flag, subregion, population))
     
