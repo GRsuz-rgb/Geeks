@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+</head>
+<body>
+    <h1>Restaurant Menu</h1>
+    <a href="{{ url_for('add_item') }}">Add Item</a>
+    <br><br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %} 
+          <li style="color: '{% if category=='danger' %}red{% elif category=='success' %}green{% else %}blue{% endif %}'">{{ message }}</li>  
+        {% endfor %}
+        </ul>
+      {% endif}
+    {% endwith %}      
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Id</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>
+                <a href="{{ url_for('update_item', item_id=item[0]) }}">Update</a> |
+                <a href="{{ url_for('delete_item', item_id=item[0]) }}" onclick="return confirm('Delete this item?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
