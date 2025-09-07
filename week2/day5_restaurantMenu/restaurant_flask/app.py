@@ -29,6 +29,10 @@ def get_connection():
         
 @app.route("/")
 def home():
+    conn = get_connection()
+    if not conn:
+        return "Database connection error", 500
+    conn.close()
     return redirect(url_for("menu"))
 
 #/menu → Show all menu items (list from database)
