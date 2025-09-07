@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Challenge: Mad Libs</title>
+ </head>
+ <body>
+
+    <h1>Mad Libs</h1>
+
+    <form id="libform">
+        <label for="noun">Noun:</label><input type="text" id="noun"><br>
+        <label for="adjective">Adjective:</label><input type="text" id="adjective"><br>
+        <label for="person">Someone's Name:</label><input type="text" id="person"><br>
+        <label for="verb">Verb:</label><input type="text" id="verb"><br>
+        <label for="place">A place:</label><input type="text" id="place"><br>
+        <button id="lib-button">Lib it!</button>
+    </form>
+
+    <p>Generated story: 
+    <span id="story"></span>
+    </p>
+
+    <script>
+        //Get the value of each of the inputs in the HTML file when the form is submitted. Remember the event.preventDefault()
+        let libform = document.getElementById("libform");
+        libform.addEventListener("submit", function(event){
+            event.preventDefault();
+            
+            let noun = document.getElementById("noun").value;
+            let adjective = document.getElementById("adjective").value;
+            let person = document.getElementById("person").value;
+            let verb = document.getElementById("verb").value;
+            let place = document.getElementById("place").value;
+        
+            //Make sure the values are not empty          
+            if (noun === "" || adjective === "" || person === "" || verb === "" || place === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+            //Write a story that uses each of the values.
+            let story = `Once upon a time in ${place}, there was a ${adjective} ${noun}. Every day, ${person} would ${verb} with it. And they lived happily ever after!`;
+            document.getElementById("story").innerHTML = story;
+
+            //Make sure you check the console for errors when playing the game
+            console.log("successed story generation");
+            console.log(story);
+
+            //Bonus: Add a “shuffle” button to the HTML file, when clicked the button should change the story currently displayed (but keep the values entered by the user). The user could click the button at least three times and get a new story. Display the stories randomly.
+            let button = document.createElement("button");
+            button.innerHTML = "Shuffle";
+            document.body.appendChild(button);
+            button.addEventListener("click", function(){
+                let storyList = [
+                    `In the magical land of ${place}, a ${adjective} ${noun} lived. One day, ${person} decided to ${verb} it, and they became best friends!`,
+                    `${person} always dreamed of visiting ${place}. One day, they saw a ${adjective} ${noun} and decided to ${verb} it. It was the start of an amazing adventure!`,
+                    `Every morning in ${place}, a ${adjective} ${noun} would appear. ${person} loved to ${verb} with it, making every day special!`
+                ];
+                let storyIndex = Math.floor(Math.random() * storyList.length);
+                document.getElementById("story").textContent = storyList[storyIndex];
+            });
+        });
+    </script>
+
+ </body>
+</html>
