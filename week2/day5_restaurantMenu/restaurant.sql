@@ -6,3 +6,5 @@ CREATE TABLE Menu_Items(
         item_price smallint default 0
 );
 
+INSERT INTO Menu_Items (item_name, item_price) 
+VALUES ('Pizza', 14.30);
