@@ -27,16 +27,23 @@ def get_connection():
         return None
 
         
+@app.route("/")
+def home():
+    return redirect(url_for("menu"))
+
 #/menu → Show all menu items (list from database)
 @app.route("/menu")
 def menu():
-    conn = get_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT item_id, item_name, item_price FROM Menu_Items ORDER BY item_id")
-    items = cur.fetchall()
-    conn.close()
-    return render_template("menu.html", items=items)
-
+    try:
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT item_id, item_name, item_price FROM Menu_Items ORDER BY item_id")
+        items = cur.fetchall()
+        conn.close()
+        return render_template("menu.html", items=items)
+    except Exception as e:
+        return f"Database error: {e}"
+    
 #/add → Form to add a new item (name + price)
 @app.route("/add", methods=["GET", "POST"])
 def add_item():
