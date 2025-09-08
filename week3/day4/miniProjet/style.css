@@ -17,7 +17,7 @@ body {
     justify-content:center;
     display: grid;
     grid-template-columns: repeat(3, 60px); /*3 colonnes de meme largeur que colorBtn*/
-    grid-gap: 8px;
+    grid-gap: 10px;
     height: 100vh;
 }
 
@@ -26,6 +26,7 @@ body {
     width: 60px;
     height: 60px;
     cursor: pointer;
+    padding: 32px;
 }
 
 .grid {
@@ -44,25 +45,23 @@ body {
 }
 
 #clear {
-    width: 180px;
+    width: 210px;
     height: 50px;
-    margin-bottom: 10px;
     padding-bottom: 10px;
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 10px;
-    margin: 5px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 2px solid #888;
-    font-size: 20px;
+    font-size: 22px;
     justify-items: center;
+    margin: 4px 2px;
 }
 
 .bar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
 }
 
