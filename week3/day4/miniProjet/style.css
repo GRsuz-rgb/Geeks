@@ -16,18 +16,16 @@ body {
     padding-right: 15px;
     justify-content:center;
     display: grid;
-    grid-template-columns: repeat(3, 50px);
-    gap: 5px;
+    grid-template-columns: repeat(3, 60px); /*3 colonnes de meme largeur que colorBtn*/
+    grid-gap: 8px;
     height: 100vh;
 }
 
 .colorBtn {
     border: 1px solid black;
     width: 60px;
-    height: 80px;
+    height: 60px;
     cursor: pointer;
-    margin: 2px;
-    padding: 5px;
 }
 
 .grid {
