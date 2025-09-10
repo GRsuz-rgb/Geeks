@@ -1,5 +1,5 @@
 //1. 
-let sentence = ['The movie is not that bad, I like it'];
+let sentence = 'The movie is not that bad, I like it';
 //2. 
 let wordNot = sentence.indexOf('not');
 //3. 
