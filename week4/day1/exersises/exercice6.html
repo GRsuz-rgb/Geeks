@@ -1,0 +1,30 @@
+<!--
+Exercise 6 : Fortune teller
+1.Create a self invoking function that takes 4 arguments: number of children, partner’s name, geographic location, job title.
+2.The function should display in the DOM a sentence like "You will be a <job title> in <geographic location>, and married to <partner's name> with <number of children> kids."
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        (function(childrenNum, partnerName, geoLocat, jobTitle){
+        const sentence = `You will be a ${jobTitle} in ${geoLocat}, and married to ${partnerName} with ${childrenNum} kids.`;
+        document.body.innerHTML = `<p>${sentence}</p>`;
+        })(1, "Chikage Kuroba", "Toshima Ward", "world-famous magician");
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
