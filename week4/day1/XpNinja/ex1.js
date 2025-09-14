@@ -18,5 +18,4 @@ function mergeWords(string) {
 const mergeWords = (string) => (nextString) => nextString == undefined ? string : mergeWords(`${string} ${nextString}`);
 
 console.log(mergeWords('Hello')()); // 'Hello'
-console.log(mergeWords('Hello')('World')()); // 'Hello World'
 console.log(mergeWords('There')('is')('no')('spoon.')()); // 'There is no spoon.'
