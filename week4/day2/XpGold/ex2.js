@@ -4,7 +4,7 @@
   (acc, cur) => {
     return acc.concat(cur);
   },
-  [1, 2],
+  [1, 2],//initial value of acc 
 );
 
 //acc est initialise par [1,2]
