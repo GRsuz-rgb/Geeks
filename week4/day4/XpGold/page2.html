@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Data</h2>
+    <section id="outputData"></section>
+    <script>
+        //reuperer les parametres de l'url
+        const parametres = new URLSearchParams(window.location.search);
+        const firstName = parametres.get("firstname");
+        const lastName = parametres.get("lastname");
+
+        const section = document.getElementById("outputData");
+
+        //afficher les donnees
+        firstName && lastName ? section.textContent=`Full Name : ${firstName} ${lastName}` : section.textContent="No data received."; 
+    </script>
+</body>
+</html>
