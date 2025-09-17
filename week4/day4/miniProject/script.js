@@ -2,7 +2,7 @@
 const objects = [
     {id: 0, author: "Saadallah Wannous", quote: "We are doomed by hope, and come what may, today cannot be the end of history.", likes: 0},
     {id: 1, author: "Naguib Mahfouz", quote: "Fear doesn't prevent death. It prevents life.", likes: 0},
-    {id: 2, author: "Amal Dunqul", quote: "Do not reconcile blood with blood! Do not reconcile! Even if it is said, “an eye for an eye“, are all eyes equal? Would you turn a stranger into your brother?...", like: 0}
+    {id: 2, author: "Amal Dunqul", quote: "Do not reconcile blood with blood! Do not reconcile! Even if it is said, “an eye for an eye“, are all eyes equal? Would you turn a stranger into your brother?...", likes: 0}
 ];
 
 let lastId = -1;
@@ -26,9 +26,9 @@ let filterIndex = 0;
 //display quote
 const displayQuote = (quote) => {
     current = quote;
-    quoteBox.innerHTML = `<p>${quote.quote}</p>
-                        <p>${quote.author}</p>
-                        <p>${quote.likes}</p>`;
+    quoteBox.innerHTML = `<p>Quote : ${quote.quote}</p>
+                        <p>Author : ${quote.author}</p>
+                        <p>Likes : ${quote.likes}</p>`;
 };
 
 
@@ -88,9 +88,9 @@ likeBtn.addEventListener("click", () => {
 const displayFilterQuote = () => {
   const quote = filterQuotes[filterIndex];
   filterResults.innerHTML = `
-    <p>"${quote.quote}"</p>
-    <p>${quote.author}</p>
-    <p> ${quote.likes}</p>
+    <p>Quote : ${quote.quote}</p>
+    <p>Author : ${quote.author}</p>
+    <p>Likes : ${quote.likes}</p>
   `;
 };
 
