@@ -122,7 +122,7 @@ previousBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
-    if (filterIndex < filterQuotes.length- 1) {
+    if (filterIndex < filterQuotes.length - 1) {
         filterIndex++;
         displayFilterQuote();
     }
