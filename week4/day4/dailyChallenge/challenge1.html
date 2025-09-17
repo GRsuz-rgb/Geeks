@@ -1,0 +1,49 @@
+<!--daily Challenge : -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form id="form"> 
+        <label for="name">First Name : </label>
+        <input type="text" id="name" name="name">
+        <br><br>
+
+        <label for="lastname">Last Name : </label>
+        <input type="text" id="lastname" name="lastname">
+
+    <input type="submit" value="Send">
+  </form>
+
+  <h2>Data recieved : </h2>
+  <section id="output"></section>
+
+  <script>
+    const form = document.getElementById("form");
+    const output = document.getElementById("output");
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const firstName = document.getElementById("name").value;
+        const lastName = document.getElementById("lastname").value;
+
+        //create js object
+        const obj = {
+            name : firstName,
+            lastname : lastName
+        };
+        
+        //convert to json string
+        const jsonObj = JSON.stringify(obj);
+
+        output.textContent = jsonObj;
+    });
+  </script>
+</body>
+</html>
+
