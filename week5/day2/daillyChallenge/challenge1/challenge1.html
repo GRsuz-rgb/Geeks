@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Giphy Random Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      cursor: pointer;
+      border: none;
+      background: #0077cc;
+      color: white;
+      border-radius: 5px;
+    }
+
+    button.delete-btn {
+      background: #e63946;
+      margin-left: 10px;
+    }
+
+    button#deleteAll {
+      background: #ff3333;
+      margin-top: 15px;
+    }
+
+    .gif-container {
+      display: inline-block;
+      margin: 10px;
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .gif-container img {
+      max-width: 250px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎬 Giphy Random Search</h1>
+  
+  <form id="gifForm">
+    <input type="text" id="searchInput" placeholder="Enter a category (e.g. sun)">
+    <button type="submit">Get GIF</button>
+  </form>
+
+  <button id="deleteAll">Delete All GIFs</button>
+
+  <div id="gifResults"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
