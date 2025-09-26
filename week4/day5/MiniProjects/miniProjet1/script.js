@@ -77,6 +77,7 @@ const search = document.getElementById("search");
 
 //display robots
 const displayRobot = (objs) => {
+    robotContainer.innerHTML = '';  //clear the page 
     objs.forEach(({name, email, image}) => {
         const card = document.createElement("div");
         card.className = "card";
@@ -85,14 +86,19 @@ const displayRobot = (objs) => {
                           <p>${email}</p>`;
         robotContainer.appendChild(card);                  
     });
-}
+};
 
 displayRobot(robots);
 
+//search
+search.addEventListener('input', (e) => {
+    const searched = e.target.value.toLowerCase();
+    const filtered = robots.filter(robot => 
+        robot.name.toLowerCase().includes(searched)
+    ); 
 
-
-
-
+    displayRobot(filtered);
+});
 
 
 
