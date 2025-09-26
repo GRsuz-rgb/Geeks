@@ -34,3 +34,36 @@ body {
     border-radius: 6px;
 }
 
+#robot-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 220px;
+    background: #3ebce6 url(img/card-pattern.png);
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    flex-basis: calc(100% / 4);
+}
+
+.card img {
+    border-radius: 50%;
+    background: #222;
+    padding: 10px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+  color: #111;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #444;
+}
