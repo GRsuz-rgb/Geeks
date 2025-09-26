@@ -5,7 +5,6 @@ body {
     font-family: 'Arial', sans-serif;
     background: #580389 url(img/circuit-pattern.png);
     background-size: cover;
-    color: #272727;
 }
 
 .header {
@@ -22,7 +21,7 @@ body {
    font-weight: lighter;
    font-size: 2rem;                     
    letter-spacing: 2px;
-   color: rgb(19, 57, 95);
+   color: #13395f;
 }
 
 #search {
@@ -46,24 +45,29 @@ body {
     width: 220px;
     background: #3ebce6 url(img/card-pattern.png);
     border-radius: 10px;
-    text-align: center;
-    padding: 20px;
+    padding: 40px;
     flex-basis: calc(100% / 4);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+    text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card img {
     border-radius: 50%;
     background: #222;
-    padding: 10px;
+    padding: 5px;
 }
 
 .card h2 {
-  font-size: 1.1rem;
-  margin: 10px 0 5px;
-  color: #111;
+  color: #13395f;
+  font-size: 25px;
 }
 
 .card p {
-  font-size: 0.9rem;
-  color: #444;
+  font-size: 18px;
+  color: #13395f;
 }
