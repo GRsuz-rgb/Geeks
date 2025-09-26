@@ -1,0 +1,36 @@
+@import url('https://fonts.cdnfonts.com/css/sega-logo-font');
+                
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #580389 url(img/circuit-pattern.png);
+    background-size: cover;
+    color: #272727;
+}
+
+.header {
+    display: flex; /*mettre les elements dans une mm ligne*/
+    justify-content: left; /*mettre le contenue a gauche*/
+    align-items: center; /*centrer les elements */
+    padding: 15px 20px;
+    gap: 30px; /*separer les elements*/
+    background: #4caf50;
+}
+
+.header h1 {
+   font-family: 'SEGA LOGO FONT', sans-serif;
+   font-weight: lighter;
+   font-size: 2rem;                     
+   letter-spacing: 2px;
+   color: rgb(19, 57, 95);
+}
+
+#search {
+    padding: 10px;
+    background-color: #b6b5b5;
+    font-size: 1rem;
+    width: 650px;
+    border: none;
+    border-radius: 6px;
+}
+
