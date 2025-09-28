@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        
+        let shoppingList=[];
+        
+        const root = document.getElementById("root");
+
+        let form = document.createElement("form");
+        
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Enter an item";
+        
+        let addButton = document.createElement("button");
+        addButton.textContent = "AddItem";
+
+        let clearButton = document.createElement("button");
+        clearButton.textContent = "ClearAll";
+
+        form.appendChild(input);
+        form.appendChild(addButton);
+        form.appendChild(clearButton);
+        root.appendChild(form);
+        
+        let ul = document.createElement("ul");
+
+        root.appendChild(ul);
+
+        function addItem(item) {
+            item.preventDefault();
+            let value = input.value.trim();
+            if (value) {
+                shoppingList.push(value);
+
+                let li = document.createElement("li");
+                li.textContent = value;
+                ul.appendChild(li);
+
+                input.value = "";
+            }
+        }
+
+        function clearAll(item) {
+            item.preventDefault();
+            shoppingList = [];
+            ul.innerHTML = "";
+        }
+
+        addButton.addEventListener("click", addItem);
+        clearButton.addEventListener("click", clearAll);
+    </script>
+</body>
+</html>
