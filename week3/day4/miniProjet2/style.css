@@ -11,6 +11,7 @@ body {
 
 .keys {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
@@ -38,7 +39,7 @@ body {
 }
 
 .playing {
-  transform: scale(1.1);
+  transform: scale(1.12);
   box-shadow: 0 0 20px #ff0;
   border-color: #fff;
 }
