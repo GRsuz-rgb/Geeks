@@ -37,7 +37,7 @@ setTimeout(concurrentStart, 4000)
 //after 1 second => "fast promise is done".
 //after 2 seconds => "slow promise is done" and promise resolves with "slow".
 //await fast finishes (but it was already resolved earlier) => logs "fast".
-
+//fast finishes first, but the code is still await slow => so it waits for slow first
 
 //output:
 //==CONCURRENT START with await==
