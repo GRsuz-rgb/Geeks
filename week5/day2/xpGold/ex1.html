@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giphy API</title>
+</head>
+<body>
+    <script>
+    //Exercise 1 : Giphy API #2
+    const apiKey = "N75kdjYpsP26alILG9NnSGhTMBZaLDgU" ;
+    const url = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=funny`;
+
+    async function getGif() {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            const gifurl = data.data.images.original.url;
+
+            //create img 
+            const img = document.createElement("img");
+            img.src = gifurl;
+            img.alt = data.data.title; //gif title
+            document.appendChild(img);
+        }
+        catch(error) {
+            console.log("errrroooooor", error);
+        }
+    }
+
+    getGif(); 
+
+    </script>
+</body>
+</html>
