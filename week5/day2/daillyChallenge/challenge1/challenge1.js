@@ -1,23 +1,22 @@
-const form = document.getElementById("gifForm");
-const searchInput = document.getElementById("searchInput");
+const form = document.getElementById("form");
+const userInput = document.getElementById("user-input");
 const gifResults = document.getElementById("gifResults");
-const deleteAllBtn = document.getElementById("deleteAll");
+const deleteAllBtn = document.getElementById("delete-all");
 
-const API_KEY = "hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My";
+const apiKey = "hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My";
 
 form.addEventListener("submit", async (event) => {
-  event.preventDefault(); // prevent page reload
+  event.preventDefault(); 
 
-  const searchTerm = searchInput.value.trim();
+  const searchTerm = userInput.value.trim();
   if (!searchTerm) {
     alert("Please enter a category!");
     return;
   }
 
   try {
-    // Fetch one random gif from Giphy
     const response = await fetch(
-      `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=${API_KEY}`
+      `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=${apiKey}`
     );
 
     if (!response.ok) {
@@ -51,13 +50,13 @@ form.addEventListener("submit", async (event) => {
     gifContainer.appendChild(deleteBtn);
     gifResults.appendChild(gifContainer);
 
-  } catch (error) {
-    console.error("Error fetching GIF:", error);
-    alert("Something went wrong fetching your GIF.");
+  } catch (err) {
+    console.log("Error fetching GIF:", err);
+    alert("Something went wrong.");
   }
 });
 
-// Delete all GIFs
+// Delete all
 deleteAllBtn.addEventListener("click", () => {
   gifResults.innerHTML = "";
 });
