@@ -33,4 +33,24 @@ let parallel = async function () {
 setTimeout(parallel, 5000)
 
 
+////after 5s it logs:   ==PARALLEL with await Promise.all==
+//and runs the   await promis.all => starting slow promise  
+//                                   starting fast promise
+//after 1s : fast promise is done   and immediately prints   fast 
+//=> after 2s :  slow promise is done    and prints    slow .
+
+
+
+
+
+
+//output:
+//==PARALLEL with await Promise.all==
+//starting slow promise
+//starting fast promise
+//fast promise is done
+//fast
+//slow promise is done
+//slow
+
 
