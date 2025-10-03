@@ -29,3 +29,22 @@ let parallelPromise = function () {
 }
 
 setTimeout(parallelPromise, 13000)
+
+
+
+//after 13s it logs:   ==PARALLEL with Promise.then==
+//and logs : starting slow promise  
+//           starting fast promise
+//after 1s : fast promise is done      fast 
+//=> after 2s :  slow promise is done       slow .
+//no waiting for both
+
+
+//output:
+//==PARALLEL with Promise.then==
+//starting slow promise
+//starting fast promise
+//fast promise is done
+//fast
+//slow promise is done
+//slow
