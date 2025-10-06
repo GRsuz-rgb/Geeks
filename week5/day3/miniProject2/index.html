@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    
+  <img src="img/logo.png" alt="Pokedex Logo" class="logo">
+  <div class="pokedex">
+    <div class="screen">
+      <div id="loading" class="hidden"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+
+      <div id="error" class="hidden error">Oh no! That Pokemon isn’t available…</div>
+
+      <div id="info" class="hidden">
+        <img id="pokemon-img" alt="pokemon" class="pokemon-img">
+        <h2 id="pokemon-name"></h2>
+        <p><strong>ID:</strong> <span id="pokemon-id"></span></p>
+        <p><strong>Type:</strong> <span id="pokemon-type"></span></p>
+        <p><strong>Height:</strong> <span id="pokemon-height"></span></p>
+        <p><strong>Weight:</strong> <span id="pokemon-weight"></span></p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="prev"><i class="fas fa-arrow-left"></i></button>
+      <button id="random">Random</button>
+      <button id="next"><i class="fas fa-arrow-right"></i></button>
+    </div>
+  
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
