@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Wars Info</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="logo">STAR WARS</h1>
+
+    <div class="card" id="character">
+      <p id="loading" class="hidden"><i class="fas fa-spinner fa-spin"></i> Loading...</p>
+      <div id="info" class="hidden">
+        <h2 id="name"></h2>
+        <p><strong>Height:</strong> <span id="height"></span></p>
+        <p><strong>Gender:</strong> <span id="gender"></span></p>
+        <p><strong>Birth Year:</strong> <span id="birth-year"></span></p>
+        <p><strong>Home World:</strong> <span id="homeworld"></span></p>
+      </div>
+      <p id="error" class="hidden error"></p>
+    </div>
+
+    <button id="btn">Find Someone</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

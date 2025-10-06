@@ -1,0 +1,48 @@
+body {
+  background: url('https://i.imgur.com/EXJ0LQv.jpg') repeat;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+.logo {
+  font-size: 80px;
+  color: #ffe81f;
+  text-shadow: 0 0 20px #ffe81f;
+}
+
+.card {
+  border: 2px solid yellow;
+  border-radius: 10px;
+  padding: 20px;
+  width: 350px;
+  margin: 30px auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+button {
+  background: #ffe81f;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #ffec5c;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+}
