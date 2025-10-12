@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Emoji Guessing Game 🎯</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    button { margin: 10px; padding: 10px 20px; cursor: pointer; }
+    .feedback { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🎯 Emoji Guessing Game</h1>
+
+  <div id="game">
+    <div id="emoji" style="font-size: 80px;"></div>
+    <div id="options"></div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <h2>🏆 Leaderboard</h2>
+  <ul id="leaderboard"></ul>
+
+  <script>
+    let currentEmoji = null;
+    const player = prompt("Enter your name:");
+
+    async function loadEmoji() {
+      const res = await fetch("/emoji");
+      currentEmoji = await res.json();
+      document.getElementById("emoji").textContent = currentEmoji.emoji;
+
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+      currentEmoji.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => makeGuess(option);
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    async function makeGuess(choice) {
+      const res = await fetch("/guess", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ guess: choice, correct: currentEmoji.correct, player }),
+      });
+      const data = await res.json();
+      document.getElementById("feedback").textContent = data.correct ? "✅ Correct!" : "❌ Wrong!";
+      await updateLeaderboard();
+      setTimeout(loadEmoji, 1000);
+    }
+
+    async function updateLeaderboard() {
+      const res = await fetch("/leaderboard");
+      const leaders = await res.json();
+      const list = document.getElementById("leaderboard");
+      list.innerHTML = leaders.map(l => `<li>${l.name}: ${l.score}</li>`).join("");
+    }
+
+    loadEmoji();
+    updateLeaderboard();
+  </script>
+</body>
+</html>
