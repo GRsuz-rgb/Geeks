@@ -8,4 +8,4 @@ app.use(express.json()); // Parse JSON body
 app.use("/posts", postsRouter);
 
 const PORT = 3000;
-app.listen(PORT, () => console.log(`📝 Blog API running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Blog API running on http://localhost:${PORT}`));
