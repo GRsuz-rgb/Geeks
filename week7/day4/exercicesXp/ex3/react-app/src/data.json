@@ -1,0 +1,21 @@
+{
+  "SocialMedias": ["https://www.facebook.com", "https://www.github.com", "https://www.linkedin.com"],
+  "Skills": {
+    "Programming": ["Java", "Python", "C#"],
+    "Tools": ["JavaScript(ES5, ES6)", "TypeScript", "HTML5", "CSS(SCSS/SASS)", "React"]
+  },
+  "Experiences": [
+    {
+      "company": "Google",
+      "position": "Frontend Developer",
+      "years": "2018-2020",
+      "country": "USA"
+    },
+    {
+      "company": "Microsoft",
+      "position": "Backend Developer",
+      "years": "2020-2022",
+      "country": "China"
+    }
+  ]
+}

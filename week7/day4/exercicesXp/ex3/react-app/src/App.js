@@ -1,0 +1,16 @@
+import React from "react";
+import Example1 from "./Example1";
+import Example2 from "./Example2";
+import Example3 from "./Example3";
+
+function App() {
+  return (
+    <div className="bg-gray-100 min-h-screen p-6">
+      <Example1 />
+      <Example2 />
+      <Example3 />
+    </div>
+  );
+}
+
+export default App;
