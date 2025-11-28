@@ -1,0 +1,2 @@
+hello! 
+Ready to display the content of Hello.txt in the terminal
