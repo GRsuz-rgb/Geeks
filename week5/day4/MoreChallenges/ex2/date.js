@@ -10,7 +10,3 @@ export default function minutesLived(birthDate) {
 
 
 
-//bonus :
-//npm install prompt-sync
-//const prompt = require("prompt-sync")();
-//const birthdate = prompt("Enter your birthdate (YYYY-MM-DD): ");
