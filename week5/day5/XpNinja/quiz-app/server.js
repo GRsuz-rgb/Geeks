@@ -3,7 +3,7 @@ import questions from './questions.js';
 
 const app = express();
 app.use(json());
-//app.use(express.static("public")); //Tout ce qui se trouve dans le dossier public/ peut être servi directement au navigateur.
+app.use(express.static("public")); //Tout ce qui se trouve dans le dossier public/ peut être servi directement au navigateur.
 
 app.get('/questions', (req, res) => {
     res.json(questions);
